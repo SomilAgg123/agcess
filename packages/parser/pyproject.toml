@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agcess-parser"
+version = "0.1.0"
+description = "Pure parsers for structured agricultural SMS messages"
+requires-python = ">=3.11"
+authors = [{name = "Agcess contributors"}]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agcess_parser*"]
