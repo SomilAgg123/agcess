@@ -22,6 +22,6 @@ The original technology stack is listed above. The hosted portfolio simulation r
 
 **Source:** https://github.com/SomilAgg123/agcess
 
-Add the demo URL once GitHub Pages reports a successful deployment. The intended project URL is `https://somilagg123.github.io/agcess/`; it is not a verified live link before deployment.
+**Demo:** https://somilagg123.github.io/agcess/
 
 This copy intentionally makes no unsupported usage, revenue, customer, or time-saving claims. It distinguishes the 2022 project from the restored demo.

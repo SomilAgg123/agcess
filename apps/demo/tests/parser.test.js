@@ -14,7 +14,9 @@ for (const fixture of cases) {
     if (fixture.error)
       assert.throws(
         () => parseFieldWork(fixture.input),
-        (error) => error.code === fixture.error,
+        (error) =>
+          error.code === fixture.error &&
+          (fixture.errorLine === undefined || error.line === fixture.errorLine),
       );
     else assert.deepEqual(parseFieldWork(fixture.input), fixture.records);
   });

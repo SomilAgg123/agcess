@@ -1113,11 +1113,25 @@ tbody tr:last-child td {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: #12261dd0;
-  z-index: 50;
-  display: grid;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
   place-items: center;
   padding: 20px;
+}
+.modal-backdrop[open] {
+  display: grid;
+}
+.modal-backdrop::backdrop {
+  background: #12261dd0;
+}
+body:has(.modal-backdrop[open]) {
+  overflow: hidden;
 }
 .reset-dialog {
   background: #fff;

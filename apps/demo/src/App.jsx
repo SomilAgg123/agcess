@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { parseFieldWork, TASKS, MAX_MESSAGE_LENGTH } from "./parser.js";
 import {
   INITIAL_RECORDS,
@@ -190,6 +190,17 @@ export default function App() {
   const messageRef = useRef(null);
   const resetButtonRef = useRef(null);
   const cancelResetRef = useRef(null);
+  const resetDialogRef = useRef(null);
+  useEffect(() => {
+    const dialog = resetDialogRef.current;
+    if (resetOpen) {
+      if (!dialog.open) dialog.showModal();
+      cancelResetRef.current?.focus();
+    } else if (dialog.open) {
+      dialog.close();
+      resetButtonRef.current?.focus();
+    }
+  }, [resetOpen]);
   const visible = useMemo(
     () => filterRecords(records, filters),
     [records, filters],
@@ -260,7 +271,6 @@ export default function App() {
   }
   function closeReset() {
     setResetOpen(false);
-    resetButtonRef.current?.focus();
   }
   function reset() {
     setRecords(INITIAL_RECORDS.map((record) => ({ ...record })));
@@ -470,12 +480,7 @@ export default function App() {
                 <button
                   ref={resetButtonRef}
                   className="text-button"
-                  onClick={() => {
-                    setResetOpen(true);
-                    requestAnimationFrame(() =>
-                      cancelResetRef.current?.focus(),
-                    );
-                  }}
+                  onClick={() => setResetOpen(true)}
                 >
                   <Icon name="reset" />
                   Reset demo
@@ -789,58 +794,42 @@ export default function App() {
         <a href={SOURCE}>Explore the code</a>
       </footer>
 
-      {resetOpen && (
-        <div
-          className="modal-backdrop"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) closeReset();
-          }}
-        >
-          <div
-            className="reset-dialog"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="reset-title"
-            aria-describedby="reset-description"
-            onKeyDown={(e) => {
-              if (e.key === "Escape") closeReset();
-              if (e.key === "Tab") {
-                const buttons = e.currentTarget.querySelectorAll("button");
-                const first = buttons[0];
-                const last = buttons[buttons.length - 1];
-                if (e.shiftKey && document.activeElement === first) {
-                  e.preventDefault();
-                  last.focus();
-                } else if (!e.shiftKey && document.activeElement === last) {
-                  e.preventDefault();
-                  first.focus();
-                }
-              }
-            }}
-          >
-            <span className="icon-tile">
-              <Icon name="reset" />
-            </span>
-            <h3 id="reset-title">Start with a clean notebook?</h3>
-            <p id="reset-description">
-              This removes records you added in this tab and restores the eight
-              fictional examples.
-            </p>
-            <div className="dialog-actions">
-              <button
-                ref={cancelResetRef}
-                className="button secondary"
-                onClick={closeReset}
-              >
-                Keep my records
-              </button>
-              <button className="button primary" onClick={reset}>
-                Reset notebook
-              </button>
-            </div>
+      <dialog
+        ref={resetDialogRef}
+        className="modal-backdrop"
+        aria-labelledby="reset-title"
+        aria-describedby="reset-description"
+        onCancel={(event) => {
+          event.preventDefault();
+          closeReset();
+        }}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) closeReset();
+        }}
+      >
+        <div className="reset-dialog">
+          <span className="icon-tile">
+            <Icon name="reset" />
+          </span>
+          <h3 id="reset-title">Start with a clean notebook?</h3>
+          <p id="reset-description">
+            This removes records you added in this tab and restores the eight
+            fictional examples.
+          </p>
+          <div className="dialog-actions">
+            <button
+              ref={cancelResetRef}
+              className="button secondary"
+              onClick={closeReset}
+            >
+              Keep my records
+            </button>
+            <button className="button primary" onClick={reset}>
+              Reset notebook
+            </button>
           </div>
         </div>
-      )}
+      </dialog>
     </>
   );
 }

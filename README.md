@@ -8,6 +8,10 @@ This repository restores the core idea as an interactive browser demo and a stan
 
 ![Agcess interactive field notebook with fictional records](docs/images/demo.jpg)
 
+## Interactive demo
+
+[Open Agcess on GitHub Pages](https://somilagg123.github.io/agcess/). Try a sample message, then explore the dashboard.
+
 ## Try it locally
 
 Use Node.js 24 (see `.nvmrc`):

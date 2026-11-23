@@ -35,11 +35,12 @@ def parse_field_work(body: str) -> list[dict]:
     People is an integer from 1 to 100; hours is a decimal greater than zero
     and at most 24. Explicit lines replace legacy implicit batch expansion.
     """
-    lines = [line.strip() for line in _body(body).split("\n") if line.strip()]
+    _body(body)  # Validate without losing the message's original line numbers.
+    lines = [(number, line.strip()) for number, line in enumerate(body.split("\n"), 1) if line.strip()]
     if len(lines) > MAX_RECORDS:
         raise ParseError("too_many_lines", "Use at most 20 records per message.")
     records = []
-    for number, line in enumerate(lines, 1):
+    for number, line in lines:
         parts = [part.strip() for part in line.split("-")]
         if len(parts) != 4:
             raise ParseError("format", "Use field - task - people - hours.", number)

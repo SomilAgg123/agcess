@@ -15,6 +15,8 @@ class FieldWorkTests(unittest.TestCase):
                     with self.assertRaises(ParseError) as error:
                         parse_field_work(case['input'])
                     self.assertEqual(error.exception.code, case['error'])
+                    if 'errorLine' in case:
+                        self.assertEqual(error.exception.line, case['errorLine'])
                 else:
                     self.assertEqual(parse_field_work(case['input']), case['records'])
 

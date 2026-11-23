@@ -1,24 +1,158 @@
 [
-  {"name":"single record", "input":"North Plot - pruning - 3 - 2.5", "records":[{"field":"North Plot","task":"pruning","people":3,"hours":2.5}]},
-  {"name":"compact legacy separators", "input":"A1-pruning-3-2", "records":[{"field":"A1","task":"pruning","people":3,"hours":2}]},
-  {"name":"normalize whitespace and task case", "input":"  North Plot - PRUNING - 03 - 2.50  ", "records":[{"field":"North Plot","task":"pruning","people":3,"hours":2.5}]},
-  {"name":"explicit batch", "input":"North Plot - pruning - 3 - 2.5\n\nSouth Plot - irrigation - 1 - 0.25", "records":[{"field":"North Plot","task":"pruning","people":3,"hours":2.5},{"field":"South Plot","task":"irrigation","people":1,"hours":0.25}]},
-  {"name":"empty", "input":"  ", "error":"empty"},
-  {"name":"not a string", "input":null, "error":"type"},
-  {"name":"missing section", "input":"North Plot - pruning - 3", "error":"format"},
-  {"name":"legacy nonterminating boundary", "input":"A-TASK-1-2-EXTRA", "error":"format"},
-  {"name":"negative duration", "input":"North Plot - pruning - 3 - -2", "error":"format"},
-  {"name":"unknown activity", "input":"North Plot - unknown - 3 - 2", "error":"task"},
-  {"name":"fractional crew", "input":"North Plot - pruning - 1.5 - 2", "error":"people"},
-  {"name":"zero crew", "input":"North Plot - pruning - 0 - 2", "error":"people"},
-  {"name":"crew limit", "input":"North Plot - pruning - 101 - 2", "error":"people"},
-  {"name":"zero hours", "input":"North Plot - pruning - 3 - 0", "error":"hours"},
-  {"name":"duration limit", "input":"North Plot - pruning - 3 - 25", "error":"hours"},
-  {"name":"infinite hours", "input":"North Plot - pruning - 3 - Infinity", "error":"hours"},
-  {"name":"exponential hours", "input":"North Plot - pruning - 3 - 1e1", "error":"hours"},
-  {"name":"overprecision", "input":"North Plot - pruning - 3 - 0.001", "error":"hours"},
-  {"name":"unsafe field markup", "input":"<script> - pruning - 3 - 2", "error":"field"},
-  {"name":"spreadsheet formula field", "input":"=1+1 - pruning - 3 - 2", "error":"field"},
-  {"name":"blank field", "input":" - pruning - 3 - 2", "error":"field"},
-  {"name":"batch is atomic", "input":"North Plot - pruning - 3 - 2\nSouth Plot - unknown - 2 - 1", "error":"task"}
+  {
+    "name": "single record",
+    "input": "North Plot - pruning - 3 - 2.5",
+    "records": [
+      {
+        "field": "North Plot",
+        "task": "pruning",
+        "people": 3,
+        "hours": 2.5
+      }
+    ]
+  },
+  {
+    "name": "compact legacy separators",
+    "input": "A1-pruning-3-2",
+    "records": [
+      {
+        "field": "A1",
+        "task": "pruning",
+        "people": 3,
+        "hours": 2
+      }
+    ]
+  },
+  {
+    "name": "normalize whitespace and task case",
+    "input": "  North Plot - PRUNING - 03 - 2.50  ",
+    "records": [
+      {
+        "field": "North Plot",
+        "task": "pruning",
+        "people": 3,
+        "hours": 2.5
+      }
+    ]
+  },
+  {
+    "name": "explicit batch",
+    "input": "North Plot - pruning - 3 - 2.5\n\nSouth Plot - irrigation - 1 - 0.25",
+    "records": [
+      {
+        "field": "North Plot",
+        "task": "pruning",
+        "people": 3,
+        "hours": 2.5
+      },
+      {
+        "field": "South Plot",
+        "task": "irrigation",
+        "people": 1,
+        "hours": 0.25
+      }
+    ]
+  },
+  {
+    "name": "empty",
+    "input": "  ",
+    "error": "empty"
+  },
+  {
+    "name": "not a string",
+    "input": null,
+    "error": "type"
+  },
+  {
+    "name": "missing section",
+    "input": "North Plot - pruning - 3",
+    "error": "format"
+  },
+  {
+    "name": "legacy nonterminating boundary",
+    "input": "A-TASK-1-2-EXTRA",
+    "error": "format"
+  },
+  {
+    "name": "negative duration",
+    "input": "North Plot - pruning - 3 - -2",
+    "error": "format"
+  },
+  {
+    "name": "unknown activity",
+    "input": "North Plot - unknown - 3 - 2",
+    "error": "task"
+  },
+  {
+    "name": "fractional crew",
+    "input": "North Plot - pruning - 1.5 - 2",
+    "error": "people"
+  },
+  {
+    "name": "zero crew",
+    "input": "North Plot - pruning - 0 - 2",
+    "error": "people"
+  },
+  {
+    "name": "crew limit",
+    "input": "North Plot - pruning - 101 - 2",
+    "error": "people"
+  },
+  {
+    "name": "zero hours",
+    "input": "North Plot - pruning - 3 - 0",
+    "error": "hours"
+  },
+  {
+    "name": "duration limit",
+    "input": "North Plot - pruning - 3 - 25",
+    "error": "hours"
+  },
+  {
+    "name": "infinite hours",
+    "input": "North Plot - pruning - 3 - Infinity",
+    "error": "hours"
+  },
+  {
+    "name": "exponential hours",
+    "input": "North Plot - pruning - 3 - 1e1",
+    "error": "hours"
+  },
+  {
+    "name": "overprecision",
+    "input": "North Plot - pruning - 3 - 0.001",
+    "error": "hours"
+  },
+  {
+    "name": "unsafe field markup",
+    "input": "<script> - pruning - 3 - 2",
+    "error": "field"
+  },
+  {
+    "name": "spreadsheet formula field",
+    "input": "=1+1 - pruning - 3 - 2",
+    "error": "field"
+  },
+  {
+    "name": "blank field",
+    "input": " - pruning - 3 - 2",
+    "error": "field"
+  },
+  {
+    "name": "batch is atomic",
+    "input": "North Plot - pruning - 3 - 2\nSouth Plot - unknown - 2 - 1",
+    "error": "task"
+  },
+  {
+    "name": "leading blank lines retain source line number",
+    "input": "\n\nA-unknown-1-1",
+    "error": "task",
+    "errorLine": 3
+  },
+  {
+    "name": "blank lines within a batch retain source line number",
+    "input": "A-pruning-1-1\n\nB-unknown-1-1",
+    "error": "task",
+    "errorLine": 3
+  }
 ]

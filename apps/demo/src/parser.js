@@ -29,17 +29,15 @@ export function parseFieldWork(body) {
     );
   if (!body.trim()) throw new ParseError("empty", "Enter a message to parse.");
   const lines = body
-    .trim()
     .split("\n")
-    .map((line) => line.trim())
-    .filter(Boolean);
+    .map((line, index) => ({ line: line.trim(), number: index + 1 }))
+    .filter(({ line }) => line.length > 0);
   if (lines.length > MAX_RECORDS)
     throw new ParseError(
       "too_many_lines",
       "Use at most 20 records per message.",
     );
-  return lines.map((line, index) => {
-    const number = index + 1;
+  return lines.map(({ line, number }) => {
     const parts = line.split("-").map((part) => part.trim());
     if (parts.length !== 4)
       throw new ParseError(

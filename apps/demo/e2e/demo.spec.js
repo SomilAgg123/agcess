@@ -28,7 +28,20 @@ test("parse, add, and reset records without external requests", async ({
   await expect(page.getByTestId("labor-hours")).toHaveText("72 hrs");
   await page.getByRole("button", { name: "Reset demo", exact: true }).click();
   await expect(page.getByRole("dialog")).toBeVisible();
-  await page.getByRole("button", { name: "Keep my records" }).click();
+  await expect(
+    page.getByRole("button", { name: "Keep my records" }),
+  ).toBeFocused();
+  await page
+    .getByRole("button", { name: "Reset notebook", exact: true })
+    .press("Tab");
+  await expect(
+    page.getByRole("button", { name: "Keep my records" }),
+  ).toBeFocused();
+  await page.getByRole("button", { name: "Keep my records" }).press("Escape");
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(
+    page.getByRole("button", { name: "Reset demo", exact: true }),
+  ).toBeFocused();
   await expect(page.getByTestId("record-count")).toHaveText("9");
   await page.getByRole("button", { name: "Reset demo", exact: true }).click();
   await page
@@ -58,16 +71,14 @@ test("errors are actionable and editing invalidates the prior parse", async ({
   ).toBeVisible();
   await page
     .getByLabel("Your message", { exact: true })
-    .fill("A-TASK-1-2-EXTRA");
+    .fill("\nA-pruning-1-1\n\nA-TASK-1-2-EXTRA");
   await expect(
     page.getByRole("button", { name: /Add .* to dashboard/ }),
   ).toHaveCount(0);
   await page
     .getByRole("button", { name: "Parse message", exact: true })
     .click();
-  await expect(page.getByRole("alert")).toContainText(
-    "Use field - task - people - hours.",
-  );
+  await expect(page.getByRole("alert")).toContainText("Check line 4");
 });
 
 test("filters update totals and export only visible records", async ({

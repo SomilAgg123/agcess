@@ -30,7 +30,7 @@ The suite builds the app at `/agcess/`, starts the production preview at port 41
 
 This repository is configured for **Pages → Source → GitHub Actions**. If you fork it, enable that source in your repository settings. The `Publish demo` workflow runs when changes reach `main` or when manually dispatched. It tests the application, builds with the configured Pages base path, uploads `dist`, and deploys through the `github-pages` environment.
 
-The implementation PR is intentionally left open for review. A successful workflow after merge is the signal that the demo is live. The expected URL for this repository is `https://somilagg123.github.io/agcess/`.
+A successful deployment publishes the demo at [somilagg123.github.io/agcess](https://somilagg123.github.io/agcess/). The workflow tests the production build before publishing.
 
 To check the project-path build locally:
 
@@ -45,10 +45,6 @@ Open the preview server's `/agcess/` path. A custom domain or different reposito
 
 Link a project card to the source repository and, after a successful deployment, to the live demo. Suggested copy is in [portfolio.md](portfolio.md). No personal website repository was provided or changed during the restoration.
 
-## Review order
+## Future changes
 
-1. Merge the parser foundation PR into `main` after review. Prefer a merge commit for this first PR because the demo branch is based on it.
-2. Change the demo PR's base to `main` after the first merge. Its remaining diff should contain only the demo, documentation, and deployment changes.
-3. Merge the demo PR after review and successful checks. Pages publishes from `main`.
-
-A squash merge of the first PR is also possible, but requires updating the stacked demo branch to avoid showing the parser commits again. No PR is automatically merged by the restoration workflow.
+Propose changes in a pull request targeting `main`. Review the changes and wait for the Python, browser, and secret-scan checks before merging. The Pages workflow then tests, builds, and deploys the merged code.
