@@ -1,0 +1,40 @@
+# Local files and generated artifacts
+.DS_Store
+node_modules/
+dist/
+build/
+coverage/
+.coverage*
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.cache/
+.vite/
+*.egg-info/
+.venv/
+venv/
+*.log
+playwright-report/
+test-results/
+
+# Local restoration assessment; not part of the public project
+docs/publishing-plan.md
+docs/portfolio-brief.md
+
+# Credentials and private legacy configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+creds.py
+*_dec.json
+clients.json
+clients.txt
+**/*_config.json
+**/*_config.txt
+
+# This file does not remove anything already committed to Git history.
+# Future synthetic examples should use names such as client.example.json.
