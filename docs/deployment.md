@@ -28,7 +28,7 @@ The suite builds the app at `/agcess/`, starts the production preview at port 41
 
 ## GitHub Pages
 
-Repository settings must use **Pages → Source → GitHub Actions**. The `Publish demo` workflow runs when changes reach `main` or when manually dispatched. It tests the application, builds with the configured Pages base path, uploads `dist`, and deploys through the `github-pages` environment.
+This repository is configured for **Pages → Source → GitHub Actions**. If you fork it, enable that source in your repository settings. The `Publish demo` workflow runs when changes reach `main` or when manually dispatched. It tests the application, builds with the configured Pages base path, uploads `dist`, and deploys through the `github-pages` environment.
 
 The implementation PR is intentionally left open for review. A successful workflow after merge is the signal that the demo is live. The expected URL for this repository is `https://somilagg123.github.io/agcess/`.
 

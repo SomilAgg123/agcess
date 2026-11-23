@@ -6,6 +6,8 @@ Agcess turns structured text messages into records that can be explored through 
 
 This repository restores the core idea as an interactive browser demo and a standalone Python parser package. All examples are fictional. No messaging accounts, database credentials, or original client data are required.
 
+![Agcess interactive field notebook with fictional records](docs/images/demo.jpg)
+
 ## Try it locally
 
 Use Node.js 24 (see `.nvmrc`):
