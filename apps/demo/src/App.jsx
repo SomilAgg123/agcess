@@ -803,6 +803,19 @@ export default function App() {
           event.preventDefault();
           closeReset();
         }}
+        onKeyDown={(event) => {
+          if (event.key !== "Tab") return;
+          const buttons = event.currentTarget.querySelectorAll("button");
+          const first = buttons[0];
+          const last = buttons[buttons.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        }}
         onClick={(e) => {
           if (e.target === e.currentTarget) closeReset();
         }}
