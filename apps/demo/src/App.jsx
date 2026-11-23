@@ -145,7 +145,6 @@ function FieldIllustration() {
           <Icon name="check" />
         </span>
       </div>
-      <div className="map-caption">ONE FIELD NOTE. A STRUCTURED RECORD.</div>
     </div>
   );
 }
@@ -209,7 +208,6 @@ export default function App() {
   const activities = activityHours(visible);
   const fields = [...new Set(records.map((record) => record.field))].sort();
   const hasFilters = Object.values(filters).some(Boolean);
-  const newCount = records.filter((record) => record.added).length;
 
   function updateMessage(value) {
     setMessage(value);
@@ -225,7 +223,7 @@ export default function App() {
       setParsed(result);
       setError(null);
       setNotice(
-        `${result.length} ${result.length === 1 ? "record is" : "records are"} ready to add.`,
+        `${result.length} ${result.length === 1 ? "record" : "records"} ready.`,
       );
     } catch (problem) {
       setParsed([]);
@@ -252,7 +250,7 @@ export default function App() {
     ]);
     setFilters({ query: "", field: "", task: "" });
     setNotice(
-      `Added ${parsed.length} ${parsed.length === 1 ? "record" : "records"} to the dashboard. Filters have been cleared.`,
+      `Added ${parsed.length} ${parsed.length === 1 ? "record" : "records"}.${hasFilters ? " Filters cleared." : ""}`,
     );
     setParsed([]);
   }
@@ -267,7 +265,7 @@ export default function App() {
     link.click();
     link.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
-    setNotice(`Exported ${visible.length} fictional records.`);
+    setNotice(`Exported ${visible.length} records.`);
   }
   function closeReset() {
     setResetOpen(false);
@@ -278,7 +276,7 @@ export default function App() {
     setMessage(SAMPLES[0].text);
     setParsed([]);
     setError(null);
-    setNotice("Demo reset. The original eight fictional records are restored.");
+    setNotice("Demo reset.");
     closeReset();
   }
 
@@ -293,10 +291,10 @@ export default function App() {
             <span className="brand-mark">
               <Icon name="leaf" />
             </span>
-            agcess<span className="brand-tag">FIELD NOTES, CONNECTED</span>
+            agcess
           </a>
           <nav aria-label="Main navigation">
-            <a href="#story">The project</a>
+            <a href={`${SOURCE}/blob/main/docs/portfolio.md`}>The project</a>
             <a href={SOURCE}>
               View source <Icon name="code" />
             </a>
@@ -307,45 +305,17 @@ export default function App() {
       <main id="top">
         <section className="hero container" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <p className="eyebrow">FROM A TEXT MESSAGE TO A BETTER RECORD</p>
             <h1 id="hero-title">
               From the field,
               <br />
               <em>into focus.</em>
             </h1>
-            <p className="hero-description">
-              A simple text can tell a bigger story. Agcess turns agricultural
-              field notes into structured data for dashboards and reports.
-            </p>
             <a className="button primary" href="#demo">
               Explore the demo
             </a>
-            <span className="hero-footnote">
-              A restoration of the original 2022 team project.
-            </span>
           </div>
           <FieldIllustration />
         </section>
-
-        <div className="workflow-strip">
-          <div className="container workflow-inner">
-            <p>THE IDEA IS SIMPLE</p>
-            <span>
-              <Icon name="message" />
-              Capture a field note
-            </span>
-            <span className="workflow-line" />
-            <span>
-              <Icon name="code" />
-              Make it structured
-            </span>
-            <span className="workflow-line" />
-            <span>
-              <Icon name="grid" />
-              See the bigger picture
-            </span>
-          </div>
-        </div>
 
         <section
           id="demo"
@@ -353,13 +323,8 @@ export default function App() {
           aria-labelledby="demo-title"
         >
           <div className="section-heading">
-            <div>
-              <p className="eyebrow">TRY IT FOR YOURSELF</p>
-              <h2 id="demo-title">Your field notebook.</h2>
-            </div>
-            <div className="demo-label">
-              Interactive simulation<span>Fictional data · browser only</span>
-            </div>
+            <h2 id="demo-title">Field notebook</h2>
+            <span className="demo-label">Demo data</span>
           </div>
           <div className="workspace">
             <aside className="composer" aria-label="Message simulator">
@@ -367,14 +332,11 @@ export default function App() {
                 <span className="icon-tile">
                   <Icon name="message" />
                 </span>
-                <div>
-                  <h3>Start with a text.</h3>
-                  <p>No phone needed.</p>
-                </div>
+                <h3>Field message</h3>
               </div>
               <form onSubmit={parse}>
                 <fieldset className="sample-picker">
-                  <legend>Load an example</legend>
+                  <legend>Examples</legend>
                   <div>
                     {SAMPLES.map((sample) => (
                       <button
@@ -410,10 +372,6 @@ export default function App() {
                 />
                 <p className="format-help" id="format-help">
                   <code>Field - task - people - hours</code>
-                  <span>
-                    One record per line. Try pruning, harvesting, irrigation,
-                    planting, or scouting.
-                  </span>
                 </p>
                 {error && (
                   <div
@@ -457,26 +415,16 @@ export default function App() {
                 ) : (
                   <div className="preview-empty">
                     <Icon name="grid" />
-                    <p>
-                      Your parsed fields will appear here.
-                      <br />
-                      Nothing is added until you choose.
-                    </p>
+                    <p>No parsed records</p>
                   </div>
                 )}
               </div>
-              <p className="privacy-note">
-                This is a simulation. No SMS is sent. Your entries stay in this
-                tab and disappear when you reload.
-              </p>
+              <p className="privacy-note">No SMS sent · resets on refresh</p>
             </aside>
 
             <div className="dashboard">
               <div className="dashboard-heading">
-                <div>
-                  <h3>Operations overview</h3>
-                  <p>Fictional week · May 18–22, 2026</p>
-                </div>
+                <h3>Operations overview</h3>
                 <button
                   ref={resetButtonRef}
                   className="text-button"
@@ -493,11 +441,6 @@ export default function App() {
                     <Icon name="message" />
                   </span>
                   <strong data-testid="record-count">{summary.records}</strong>
-                  <span>
-                    {newCount
-                      ? `${newCount} added in this session`
-                      : "From the fictional sample week"}
-                  </span>
                 </div>
                 <div className="stat">
                   <span className="stat-label">
@@ -508,7 +451,6 @@ export default function App() {
                     {formatNumber(summary.laborHours)}
                     <small> hrs</small>
                   </strong>
-                  <span>People × hours, summed</span>
                 </div>
                 <div className="stat">
                   <span className="stat-label">
@@ -516,17 +458,11 @@ export default function App() {
                     <Icon name="grid" />
                   </span>
                   <strong>{summary.fields.toString().padStart(2, "0")}</strong>
-                  <span>
-                    {hasFilters
-                      ? "In the filtered records"
-                      : "Across the sample farm"}
-                  </span>
                 </div>
               </div>
               <div className="activity-panel">
                 <div className="activity-title">
-                  <h4>Where the time goes</h4>
-                  <span>Labor hours by activity</span>
+                  <h4>Labor hours by activity</h4>
                 </div>
                 <div className="activity-bars">
                   {activities.length ? (
@@ -624,8 +560,7 @@ export default function App() {
                 {hasFilters && (
                   <div className="filter-status">
                     <span>
-                      Showing {visible.length} of {records.length} records.
-                      Summaries follow your filters.
+                      {visible.length} of {records.length} records
                     </span>
                     <button
                       onClick={() =>
@@ -689,7 +624,6 @@ export default function App() {
                   <div className="empty-table">
                     <Icon name="search" />
                     <h4>No matching records</h4>
-                    <p>Try another field or activity, or clear your filters.</p>
                     <button
                       className="button secondary"
                       onClick={() =>
@@ -700,13 +634,6 @@ export default function App() {
                     </button>
                   </div>
                 )}
-                <div className="table-footer">
-                  <span>
-                    {visible.length} fictional{" "}
-                    {visible.length === 1 ? "record" : "records"}
-                  </span>
-                  <span>New entries use May 22, the sample day's date.</span>
-                </div>
               </section>
             </div>
           </div>
@@ -724,64 +651,6 @@ export default function App() {
             )}
           </div>
         </section>
-
-        <section id="story" className="story-section">
-          <div className="container story-grid">
-            <div>
-              <p className="eyebrow">THE ORIGINAL PROJECT</p>
-              <h2>
-                Built around a familiar
-                <br />
-                <em>way to communicate.</em>
-              </h2>
-              <p>
-                The starting point was a field text. Agcess explored how
-                structured SMS could make agricultural recordkeeping easier to
-                capture, organize, and review.
-              </p>
-              <p>
-                The 2022 team project connected message parsing with storage,
-                dashboards, and reporting. This restoration makes one workflow
-                tangible, using fictional data and an independent browser
-                simulation.
-              </p>
-              <p className="contribution">
-                Built as a team project. Somil Aggarwal's work included much of
-                the SMS functionality and dashboard.
-              </p>
-            </div>
-            <div className="architecture">
-              <h3>From message to insight</h3>
-              <div className="architecture-step">
-                <span>Input</span>
-                <strong>SMS & field messages</strong>
-                <p>
-                  Twilio received texts; Flask routed them to the right parser.
-                </p>
-              </div>
-              <div className="architecture-step">
-                <span>Structure</span>
-                <strong>Python & PostgreSQL</strong>
-                <p>
-                  Workflow-specific parsing turned message contents into
-                  records.
-                </p>
-              </div>
-              <div className="architecture-step">
-                <span>Review</span>
-                <strong>Dashboards & reports</strong>
-                <p>
-                  React and earlier Dash interfaces, plus an Airtable-based
-                  reporting path.
-                </p>
-              </div>
-              <div className="architecture-note">
-                In this demo, parsing and records live in your browser. The
-                repository also includes standalone Python parsers.
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <footer className="container site-footer">
         <a className="brand" href="#top">
@@ -790,7 +659,9 @@ export default function App() {
           </span>
           agcess
         </a>
-        <p>Agricultural field data, captured through SMS.</p>
+        <a className="credits-link" href={`${SOURCE}/blob/main/AUTHORS.md`}>
+          Credits
+        </a>
         <a href={SOURCE}>Explore the code</a>
       </footer>
 
@@ -824,10 +695,9 @@ export default function App() {
           <span className="icon-tile">
             <Icon name="reset" />
           </span>
-          <h3 id="reset-title">Start with a clean notebook?</h3>
+          <h3 id="reset-title">Reset notebook?</h3>
           <p id="reset-description">
-            This removes records you added in this tab and restores the eight
-            fictional examples.
+            Remove added records and restore the eight examples.
           </p>
           <div className="dialog-actions">
             <button

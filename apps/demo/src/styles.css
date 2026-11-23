@@ -143,19 +143,6 @@ button {
   fill: #cae6a9;
   stroke-width: 1.4;
 }
-.brand-tag {
-  font:
-    500 11px/1.4 Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-  letter-spacing: 1.5px;
-  color: var(--muted);
-  padding-left: 23px;
-  margin-left: 17px;
-  border-left: 1px solid #d2dbce;
-}
 .nav-row nav {
   display: flex;
   gap: 32px;
@@ -181,14 +168,7 @@ button {
   grid-template-columns: 1.1fr 1fr;
   gap: 40px;
   align-items: center;
-  padding-block: 65px 60px;
-}
-.eyebrow {
-  font-size: 11px;
-  letter-spacing: 1.7px;
-  font-weight: 650;
-  color: #537246;
-  line-height: 1.6;
+  padding-block: 32px;
 }
 .hero h1 {
   font-family: Georgia, "Times New Roman", serif;
@@ -196,19 +176,11 @@ button {
   line-height: 1.04;
   letter-spacing: -3px;
   font-weight: 400;
-  margin-top: 21px;
+  margin: 0 0 28px;
 }
-.hero h1 em,
-.story-section h2 em {
+.hero h1 em {
   font-weight: 400;
   color: #587f46;
-}
-.hero-description {
-  font-size: 17px;
-  line-height: 1.75;
-  color: #56665b;
-  max-width: 490px;
-  margin: 24px 0 26px;
 }
 .button {
   display: inline-flex;
@@ -240,12 +212,6 @@ button {
 }
 .secondary:hover {
   background: #eff4eb;
-}
-.hero-footnote {
-  display: block;
-  margin-top: 16px;
-  font-size: 12px;
-  color: #74806f;
 }
 .field-scene {
   position: relative;
@@ -306,53 +272,9 @@ button {
   width: 17px;
   height: 17px;
 }
-.map-caption {
-  text-align: center;
-  font-size: 10px;
-  letter-spacing: 1.8px;
-  color: #71816a;
-  position: relative;
-  margin-top: 27px;
-}
-.workflow-strip {
-  background: #edf2e8;
-  border-top: 1px solid #e0e8d9;
-  border-bottom: 1px solid #e0e8d9;
-}
-.workflow-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  min-height: 80px;
-}
-.workflow-inner p {
-  font-size: 10px;
-  letter-spacing: 1.7px;
-  font-weight: 650;
-  color: #627859;
-  margin-right: 20px;
-}
-.workflow-inner > span:not(.workflow-line) {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
-  white-space: nowrap;
-}
-.workflow-inner svg {
-  color: #5d7d4c;
-  width: 19px;
-  height: 19px;
-}
-.workflow-line {
-  height: 1px;
-  background: #cbd8bf;
-  flex: 1;
-  max-width: 80px;
-}
 .demo-section {
-  padding-block: 60px 65px;
+  padding-block: 30px 55px;
+  border-top: 1px solid var(--border);
   scroll-margin-top: 18px;
 }
 .section-heading {
@@ -362,13 +284,12 @@ button {
   margin-bottom: 30px;
   gap: 24px;
 }
-.section-heading h2,
-.story-section h2 {
+.section-heading h2 {
   font:
     400 42px/1.12 Georgia,
     serif;
   letter-spacing: -1.6px;
-  margin-top: 10px;
+  margin-top: 0;
 }
 .demo-label {
   font-size: 13px;
@@ -376,13 +297,6 @@ button {
   text-align: right;
   font-weight: 600;
   color: #3b563b;
-}
-.demo-label span {
-  display: block;
-  font-size: 12px;
-  color: var(--muted);
-  font-weight: 400;
-  margin-top: 3px;
 }
 .workspace {
   display: grid;
@@ -418,11 +332,6 @@ button {
   font-size: 17px;
   font-weight: 600;
   letter-spacing: -0.35px;
-}
-.panel-title p {
-  font-size: 13px;
-  color: var(--muted);
-  margin-top: 4px;
 }
 .sample-picker {
   padding: 0;
@@ -509,10 +418,6 @@ textarea[aria-invalid="true"] {
     Menlo,
     monospace;
   color: #52684c;
-}
-.format-help span {
-  display: block;
-  margin-top: 6px;
 }
 .full-width {
   width: 100%;
@@ -622,11 +527,6 @@ textarea[aria-invalid="true"] {
   letter-spacing: -0.3px;
   font-weight: 600;
 }
-.dashboard-heading p {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 6px;
-}
 .text-button {
   display: inline-flex;
   align-items: center;
@@ -690,12 +590,6 @@ textarea[aria-invalid="true"] {
   color: #859178;
   letter-spacing: 0;
 }
-.stat > span:last-child {
-  font-size: 10px;
-  color: #798573;
-  line-height: 1.5;
-  display: block;
-}
 .activity-panel {
   margin-top: 17px;
   display: grid;
@@ -710,12 +604,6 @@ textarea[aria-invalid="true"] {
   font-size: 13px;
   line-height: 1.5;
   font-weight: 600;
-}
-.activity-title span {
-  font-size: 11px;
-  color: #718065;
-  display: block;
-  margin-top: 4px;
 }
 .activity-bars {
   display: grid;
@@ -764,7 +652,7 @@ textarea[aria-invalid="true"] {
   color: #7a886f;
 }
 .records-panel {
-  margin-top: 21px;
+  margin: 0 0 28px;
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 9px;
@@ -946,17 +834,6 @@ tbody tr:last-child td {
   background: #eff0f6;
   color: #717693;
 }
-.table-footer {
-  background: #fafbf8;
-  border-top: 1px solid #e9eee3;
-  padding: 12px 20px;
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  font-size: 10px;
-  line-height: 1.6;
-  color: #86917d;
-}
 .empty-table {
   text-align: center;
   padding: 30px 20px;
@@ -970,12 +847,6 @@ tbody tr:last-child td {
   font-size: 15px;
   margin-top: 10px;
   color: #48633b;
-}
-.empty-table p {
-  font-size: 12px;
-  line-height: 1.6;
-  margin: 8px 0 16px;
-  color: #738265;
 }
 .live-status:empty {
   display: none;
@@ -1004,91 +875,9 @@ tbody tr:last-child td {
   width: 17px;
   height: 17px;
 }
-.story-section {
-  background: #eaf0e4;
-  border-block: 1px solid #dce6d3;
-  padding: 65px 0;
-}
-.story-grid {
-  display: grid;
-  grid-template-columns: 1fr 0.8fr;
-  gap: 100px;
-  align-items: start;
-}
-.story-section h2 {
-  font-size: 36px;
-  line-height: 1.2;
-  margin: 16px 0 23px;
-}
-.story-section p:not(.eyebrow) {
-  font-size: 14px;
-  line-height: 1.85;
-  color: #627356;
-  margin-top: 14px;
-  max-width: 540px;
-}
-.story-section p.contribution {
-  font-size: 12px;
-  border-top: 1px solid #d5dfcb;
-  padding-top: 19px;
-  margin-top: 24px;
-  color: #738365;
-}
-.architecture {
-  background: #f8faf4;
-  border: 1px solid #d9e2d0;
-  border-radius: 10px;
-  padding: 26px 28px;
-}
-.architecture > h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 19px;
-}
-.architecture-step {
-  position: relative;
-  border-left: 1px solid #cfdcc2;
-  padding: 0 0 23px 20px;
-  margin-left: 5px;
-}
-.architecture-step::before {
-  content: "";
-  position: absolute;
-  left: -4px;
-  top: 5px;
-  width: 7px;
-  height: 7px;
-  background: #94ae79;
-  border: 1px solid #6f8c52;
-  border-radius: 2px;
-}
-.architecture-step > span {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1.1px;
-  color: #81916e;
-}
-.architecture-step > strong {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  margin-top: 5px;
-}
-.architecture .architecture-step p {
-  font-size: 12px;
-  line-height: 1.7;
-  margin-top: 6px;
-  color: #738368;
-}
-.architecture-note {
-  border-top: 1px solid #e0e7d7;
-  padding-top: 15px;
-  font-size: 11px;
-  line-height: 1.75;
-  color: #7a896d;
-}
 .site-footer {
-  padding-block: 31px;
+  border-top: 1px solid var(--border);
+  padding-block: 25px;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -1100,13 +889,12 @@ tbody tr:last-child td {
   width: 24px;
   height: 24px;
 }
-.site-footer p {
-  font-size: 11px;
-  color: #8b9681;
-  margin-left: 8px;
+.site-footer .credits-link {
+  margin-left: auto;
+  font-size: 14px;
+  color: #56704a;
 }
 .site-footer > a:last-child {
-  margin-left: auto;
   font-size: 12px;
   color: #56704a;
 }
@@ -1165,7 +953,7 @@ body:has(.modal-backdrop[open]) {
 }
 @media (min-width: 1500px) {
   .hero {
-    padding-block: 75px;
+    padding-block: 45px;
   }
   .field-scene {
     max-width: 540px;
@@ -1209,24 +997,12 @@ body:has(.modal-backdrop[open]) {
   td {
     padding-inline: 14px;
   }
-  .story-grid {
-    gap: 60px;
-  }
-  .workflow-inner {
-    gap: 16px;
-  }
-  .workflow-inner p {
-    margin-right: 0;
-  }
   .hero {
     gap: 20px;
   }
   .map-note {
     min-width: 270px;
     padding: 13px 16px;
-  }
-  .brand-tag {
-    display: none;
   }
 }
 @media (max-width: 950px) {
@@ -1239,9 +1015,6 @@ body:has(.modal-backdrop[open]) {
   }
   .hero h1 {
     font-size: 55px;
-  }
-  .hero-description {
-    font-size: 15px;
   }
   .map-note {
     min-width: 220px;
@@ -1261,17 +1034,6 @@ body:has(.modal-backdrop[open]) {
   }
   .map-check {
     display: none;
-  }
-  .map-caption {
-    font-size: 8px;
-    letter-spacing: 1.1px;
-  }
-  .workflow-inner p {
-    display: none;
-  }
-  .workflow-inner > span:not(.workflow-line) {
-    font-size: 12px;
-    gap: 8px;
   }
   .workspace {
     grid-template-columns: 280px minmax(0, 1fr);
@@ -1295,9 +1057,6 @@ body:has(.modal-backdrop[open]) {
   .stat > strong {
     font-size: 31px;
   }
-  .stat > span:last-child {
-    font-size: 9px;
-  }
   .activity-panel {
     display: block;
   }
@@ -1307,18 +1066,11 @@ body:has(.modal-backdrop[open]) {
     gap: 10px;
     margin-bottom: 15px;
   }
-  .activity-title span {
-    margin: 0;
-    font-size: 10px;
-  }
   .dashboard-heading {
     align-items: flex-start;
   }
   .dashboard-heading h3 {
     font-size: 16px;
-  }
-  .dashboard-heading p {
-    font-size: 10px;
   }
   .dashboard-heading .text-button {
     font-size: 10px;
@@ -1328,20 +1080,6 @@ body:has(.modal-backdrop[open]) {
   }
   .filter-row {
     padding-inline: 14px;
-  }
-  .table-footer {
-    padding-inline: 14px;
-    display: block;
-  }
-  .table-footer span {
-    display: block;
-  }
-  .story-grid {
-    gap: 35px;
-    grid-template-columns: 1fr 1fr;
-  }
-  .story-section h2 {
-    font-size: 31px;
   }
   .sample {
     font-size: 10px;
@@ -1374,19 +1112,10 @@ body:has(.modal-backdrop[open]) {
     padding-bottom: 28px;
     gap: 5px;
   }
-  .eyebrow {
-    font-size: 10px;
-    letter-spacing: 1.2px;
-  }
   .hero h1 {
     font-size: 58px;
-    margin-top: 17px;
+    margin-top: 0;
     letter-spacing: -2.5px;
-  }
-  .hero-description {
-    max-width: 450px;
-    font-size: 16px;
-    margin-top: 20px;
   }
   .field-scene {
     max-width: 400px;
@@ -1404,29 +1133,6 @@ body:has(.modal-backdrop[open]) {
   .map-note span:not(.map-note-icon):not(.map-check) {
     font-size: 10px;
   }
-  .map-caption {
-    font-size: 9px;
-    margin-top: 13px;
-  }
-  .workflow-inner {
-    min-height: 75px;
-    gap: 8px;
-    justify-content: space-around;
-  }
-  .workflow-inner > span:not(.workflow-line) {
-    font-size: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    text-align: center;
-  }
-  .workflow-inner .workflow-line {
-    max-width: 20px;
-  }
-  .workflow-inner svg {
-    width: 18px;
-    height: 18px;
-  }
   .demo-section {
     padding-block: 37px 40px;
   }
@@ -1442,10 +1148,6 @@ body:has(.modal-backdrop[open]) {
   .demo-label {
     font-size: 10px;
     padding-top: 4px;
-  }
-  .demo-label span {
-    font-size: 9px;
-    max-width: 120px;
   }
   .workspace {
     grid-template-columns: 1fr;
@@ -1477,9 +1179,6 @@ body:has(.modal-backdrop[open]) {
   .dashboard-heading h3 {
     font-size: 18px;
   }
-  .dashboard-heading p {
-    font-size: 12px;
-  }
   .dashboard-heading .text-button {
     font-size: 12px;
   }
@@ -1496,17 +1195,11 @@ body:has(.modal-backdrop[open]) {
     font-size: 34px;
     margin-block: 8px 4px;
   }
-  .stat > span:last-child {
-    font-size: 10px;
-  }
   .activity-panel {
     padding: 19px;
   }
   .activity-title h4 {
     font-size: 13px;
-  }
-  .activity-title span {
-    font-size: 11px;
   }
   .activity-row {
     font-size: 11px;
@@ -1536,41 +1229,10 @@ body:has(.modal-backdrop[open]) {
   td {
     padding-inline: 16px;
   }
-  .table-footer {
-    padding-inline: 16px;
-  }
-  .table-footer span {
-    display: inline;
-  }
-  .table-footer span + span {
-    margin-left: 10px;
-  }
-  .story-section {
-    padding-block: 40px;
-  }
-  .story-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  .story-section h2 {
-    font-size: 34px;
-  }
-  .architecture {
-    padding: 24px;
-  }
-  .story-section p:not(.eyebrow) {
-    font-size: 14px;
-  }
   .site-footer {
     flex-wrap: wrap;
     padding-block: 25px;
     gap: 15px;
-  }
-  .site-footer p {
-    order: 3;
-    width: 100%;
-    margin-left: 0;
-    font-size: 11px;
   }
   .live-status:not(:empty) {
     font-size: 12px;
@@ -1594,7 +1256,6 @@ body:has(.modal-backdrop[open]) {
     animation: none !important;
   }
 }
-
 /* Keep working controls and record data readable at every breakpoint. */
 .nav-row nav,
 .button,
@@ -1609,7 +1270,6 @@ body:has(.modal-backdrop[open]) {
 .dashboard-heading .text-button,
 .stat-label,
 .activity-title h4,
-.activity-title span,
 .activity-row,
 .activity-row strong,
 .search-box input,
@@ -1619,9 +1279,6 @@ td strong,
 .activity-tag,
 .filter-status,
 .filter-status button,
-.empty-table p,
-.architecture-step > strong,
-.architecture .architecture-step p,
 .site-footer > a:last-child {
   font-size: 14px;
 }
@@ -1633,22 +1290,11 @@ textarea {
 .preview-empty p {
   font-size: 14px;
 }
-.privacy-note,
-.stat > span:last-child,
-.table-footer,
-.architecture-note,
-.story-section p.contribution,
-.site-footer p {
+.privacy-note {
   font-size: 12px;
 }
 th {
   font-size: 12px;
-}
-.story-section p:not(.eyebrow):not(.contribution) {
-  font-size: 16px;
-}
-.story-section .architecture-step p {
-  font-size: 14px;
 }
 .activity-row {
   grid-template-columns: 84px minmax(20px, 1fr) 48px;
@@ -1675,10 +1321,6 @@ th {
 .activity-panel {
   grid-template-columns: 160px minmax(0, 1fr);
 }
-.activity-title span {
-  font-size: 12px;
-  line-height: 1.6;
-}
 @media (max-width: 1200px) {
   .activity-panel {
     display: block;
@@ -1688,9 +1330,6 @@ th {
     justify-content: space-between;
     gap: 12px;
     margin-bottom: 15px;
-  }
-  .activity-title span {
-    margin: 0;
   }
 }
 @media (max-width: 730px) {
@@ -1710,9 +1349,6 @@ th {
   .stat-label {
     font-size: 13px;
   }
-  .stat > span:last-child {
-    font-size: 12px;
-  }
   .activity-row {
     font-size: 13px;
   }
@@ -1722,20 +1358,10 @@ th {
   .table-scroll table {
     min-width: 560px;
   }
-  .demo-label,
-  .demo-label span {
+  .demo-label {
     font-size: 12px;
-  }
-  .demo-label span {
-    max-width: 130px;
   }
   .section-heading {
     flex-wrap: wrap;
-  }
-  .table-footer span {
-    display: block;
-  }
-  .table-footer span + span {
-    margin-left: 0;
   }
 }
